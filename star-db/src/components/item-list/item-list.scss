@@ -1,0 +1,13 @@
+.item-list {
+  display: flex;
+  background-color: #303030;
+  .list-group {
+    width: 100%;
+    .list-group-item {
+      cursor: pointer;
+      &:hover {
+        background-color: #444;
+      }
+    }
+  }
+}

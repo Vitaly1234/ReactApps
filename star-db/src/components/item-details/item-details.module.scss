@@ -1,0 +1,23 @@
+.item-details {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+
+  h4 {
+    text-align: center;
+  }
+
+  .item-image {
+    width: 30%;
+    height: 30%;
+    border-radius: 10px;
+  }
+
+  .list-group-item {
+    padding: 0.25em;
+
+    .term {
+      margin-right: 0.5rem;
+    }
+  }
+}

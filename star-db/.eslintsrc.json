@@ -1,0 +1,41 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "google"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "comma-dangle": "off",
+    "object-curly-spacing": "off",
+    "quotes": "off",
+    "require-jsdoc": "off",
+    "operator-linebreak": "off",
+    "react/jsx-key": "off",
+    "react/jsx-no-target-blank": "off",
+    "indent": "off",
+    "max-len": "off",
+    "arrow-parens": "off",
+    "eol-last": "off",
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+    "jsx-a11/anchor-is-valid": "off"
+  }
+}
