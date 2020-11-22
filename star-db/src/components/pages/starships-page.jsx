@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Row from "../row";
 import { StarshipDetails, StarshipList } from "../sw-components";
+
+import Row from "../row";
 
 export default class StarshipsPage extends Component {
   state = {

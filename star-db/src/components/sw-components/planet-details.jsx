@@ -1,8 +1,9 @@
+import ItemDetails, { Record } from "../item-details";
+
 import React from "react";
 import compose from "../hoc-helpers/compose";
 import elementData from "../hoc-helpers/element-data";
 import withSwapiService from "../hoc-helpers/with-swapi-service";
-import ItemDetails, { Record } from "../item-details";
 
 const planetChildWrap = (View) => {
   return (props) => {

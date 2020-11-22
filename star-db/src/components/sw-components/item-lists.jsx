@@ -1,8 +1,8 @@
-import React from "react";
-import listData from "../hoc-helpers/list-data";
 import ItemList from "../item-list";
-import withSwapiService from "../hoc-helpers/with-swapi-service";
+import React from "react";
 import compose from "../hoc-helpers/compose";
+import listData from "../hoc-helpers/list-data";
+import withSwapiService from "../hoc-helpers/with-swapi-service";
 
 const wrapChildFunction = (fn) => (Wrapped) => {
   return (props) => {

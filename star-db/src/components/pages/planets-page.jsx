@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import Row from "../row";
 import { PlanetDetails, PlanetList } from "../sw-components";
+import React, { Component } from "react";
+
+import Row from "../row";
 
 export default class PlanetsPage extends Component {
   state = {

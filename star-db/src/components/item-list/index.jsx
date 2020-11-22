@@ -1,6 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
 import "./item-list.scss";
+
+import PropTypes from "prop-types";
+import React from "react";
 
 const ItemList = (props) => {
   const { data, onItemSelected, children: renderLabel } = props;

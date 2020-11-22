@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import s from "./random-planet.module.scss";
-import SwapiService from "../../services/swapi-service";
-import Spinner from "../spinner";
+
 import ErrorBoundary from "../error-boundary";
 import PropTypes from "prop-types";
+import Spinner from "../spinner";
+import SwapiService from "../../services/swapi-service";
+import s from "./random-planet.module.scss";
 
 export default class RandomPlanet extends Component {
   swapiService = new SwapiService();
