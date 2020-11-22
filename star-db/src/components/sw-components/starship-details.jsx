@@ -9,13 +9,13 @@ const starshipChildWrap = (View) => {
   return (props) => {
     return (
       <View {...props}>
-        <Record field="model" label="Model" />
-        <Record field="manufacturer" label="Manufacturer" />
-        <Record field="costInCredits" label="Cost in credits" />
-        <Record field="length" label="Length" />
-        <Record field="crew" label="Crew" />
-        <Record field="passengers" label="Passengers" />
-        <Record field="cargoCapacity" label="Cargo capacity" />
+        <Record field="model" label="Model:" />
+        <Record field="manufacturer" label="Manufacturer:" />
+        <Record field="costInCredits" label="Cost in credits:" />
+        <Record field="length" label="Length:" />
+        <Record field="crew" label="Crew:" />
+        <Record field="passengers" label="Passengers:" />
+        <Record field="cargoCapacity" label="Cargo capacity:" />
       </View>
     );
   };

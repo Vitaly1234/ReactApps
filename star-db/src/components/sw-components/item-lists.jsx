@@ -30,6 +30,12 @@ const mapStarshipMethodsToProps = (swapiService) => {
   };
 };
 
+const mapFilmMethodsToProps = (swapiService) => {
+  return {
+    getData: swapiService.getAllFilms,
+  };
+};
+
 const PersonList = compose(
   withSwapiService(mapPersonMethodsToProps),
   listData,
@@ -48,4 +54,10 @@ const StarshipList = compose(
   wrapChildFunction(renderName)
 )(ItemList);
 
-export { PersonList, PlanetList, StarshipList };
+const FilmList = compose(
+  withSwapiService(mapFilmMethodsToProps),
+  listData,
+  wrapChildFunction(renderName)
+)(ItemList);
+
+export { PersonList, PlanetList, StarshipList, FilmList };

@@ -17,7 +17,15 @@ const ItemDetails = (props) => {
 
   return (
     <div className={`${s["item-details"]} card`}>
-      <img src={image} alt="item" className={s["item-image"]} />
+      <img
+        src={image}
+        alt="item"
+        onError={(e) =>
+          (e.target.src =
+            "https://starwars-visualguide.com/assets/img/big-placeholder.jpg")
+        }
+        className={s["item-image"]}
+      />
       <div className="card-body">
         <h4>{item.name}</h4>
         <ul className="list-group list-group-flush">

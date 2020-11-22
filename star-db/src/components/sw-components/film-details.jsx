@@ -5,13 +5,15 @@ import compose from "../hoc-helpers/compose";
 import elementData from "../hoc-helpers/element-data";
 import withSwapiService from "../hoc-helpers/with-swapi-service";
 
-const planetChildWrap = (View) => {
+const filmChildWrap = (View) => {
   return (props) => {
     return (
       <View {...props}>
-        <Record field="population" label="Population:" />
-        <Record field="rotationPeriod" label="Rotation period:" />
-        <Record field="diameter" label="Diameter:" />
+        <Record field="episodeNumber" label="Episode number:" />
+        <Record field="created" label="Date created:" />
+        <Record field="director" label="Director:" />
+        <Record field="producer" label="Producer:" />
+        <Record field="openingCrawl" label="Opening crawl:" />
       </View>
     );
   };
@@ -19,13 +21,13 @@ const planetChildWrap = (View) => {
 
 const mapMethodsToProps = (swapiService) => {
   return {
-    getData: swapiService.getPlanet,
-    getImageUrl: swapiService.getPlanetImage,
+    getData: swapiService.getFilm,
+    getImageUrl: swapiService.getFilmImage,
   };
 };
 
 export default compose(
   withSwapiService(mapMethodsToProps),
-  elementData("planet"),
-  planetChildWrap
+  elementData("film"),
+  filmChildWrap
 )(ItemDetails);

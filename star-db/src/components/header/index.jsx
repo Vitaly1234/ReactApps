@@ -15,6 +15,9 @@ export default class Header extends Component {
             <Link to="/people/">People</Link>
           </li>
           <li>
+            <Link to="/films/">Films</Link>
+          </li>
+          <li>
             <Link to="/planets/">Planets</Link>
           </li>
           <li>

@@ -62,6 +62,10 @@ const PlanetView = ({ planet }) => {
       <img
         src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
         className={s["planet-image"]}
+        onError={(e) =>
+          (e.target.src =
+            "https://starwars-visualguide.com/assets/img/big-placeholder.jpg")
+        }
         alt="planet"
       />
       <div>

@@ -52,6 +52,22 @@ export default class SwapiService {
     return `${this._imageBase}/starships/${id}.jpg`;
   };
 
+  getAllFilms = async () => {
+    const res = await this.getResource(`/films/`);
+    return res.results
+      .sort((a, b) => a.episode_id - b.episode_id)
+      .map(this._transformFilm);
+  };
+
+  getFilm = async (id) => {
+    const film = await this.getResource(`/films/${id}/`);
+    return this._transformFilm(film);
+  };
+
+  getFilmImage = ({ id }) => {
+    return `${this._imageBase}/films/${id}.jpg`;
+  };
+
   _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;
     return item.url.match(idRegExp)[1];
@@ -88,6 +104,18 @@ export default class SwapiService {
       gender: person.gender,
       birthYear: person.birth_year,
       eyeColor: person.eye_color,
+    };
+  };
+
+  _transformFilm = (film) => {
+    return {
+      id: this._extractId(film),
+      name: film.title,
+      created: new Date(film.created).toLocaleDateString(),
+      producer: film.producer,
+      director: film.director,
+      openingCrawl: film.opening_crawl,
+      episodeNumber: film.episode_id,
     };
   };
 }

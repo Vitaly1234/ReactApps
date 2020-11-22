@@ -1,4 +1,4 @@
-import { PeoplePage, PlanetsPage, StarshipsPage } from "../pages";
+import { FilmsPage, PeoplePage, PlanetsPage, StarshipsPage } from "../pages";
 import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
@@ -40,6 +40,7 @@ export default class App extends Component {
                   exact
                 />
                 <Route path="/people/:id?" component={PeoplePage} />
+                <Route path="/films/:id?" component={FilmsPage} />
                 <Route path="/planets/:id?" component={PlanetsPage} />
                 <Route path="/starships/:id?" component={StarshipsPage} />
                 <Route render={() => <h2>Ooops! Page not found</h2>} />

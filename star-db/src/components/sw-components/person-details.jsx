@@ -9,9 +9,9 @@ const personChildWrap = (View) => {
   return (props) => {
     return (
       <View {...props}>
-        <Record field="gender" label="Gender" />
-        <Record field="birthYear" label="Birth year" />
-        <Record field="eyeColor" label="Eye color" />
+        <Record field="gender" label="Gender:" />
+        <Record field="birthYear" label="Birth year:" />
+        <Record field="eyeColor" label="Eye color:" />
       </View>
     );
   };
