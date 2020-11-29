@@ -10,9 +10,9 @@ export default class SwapiService {
     return await res.json();
   };
 
-  getAllPeople = async () => {
-    const res = await this.getResource(`/people/`);
-    return res.results.map(this._transformPerson);
+  getAllPeople = async (page) => {
+    const res = await this.getResource(`/people/?page=${page}`);
+    return this._getPagebleData(res, this._transformPerson);
   };
 
   getPerson = async (id) => {
@@ -24,9 +24,9 @@ export default class SwapiService {
     return `${this._imageBase}/characters/${id}.jpg`;
   };
 
-  getAllPlanets = async () => {
-    const res = await this.getResource(`/planets/`);
-    return res.results.map((planet) => this._transformPlanet(planet));
+  getAllPlanets = async (page) => {
+    const res = await this.getResource(`/planets/?page=${page}`);
+    return this._getPagebleData(res, this._transformPlanet);
   };
 
   getPlanet = async (id) => {
@@ -38,9 +38,9 @@ export default class SwapiService {
     return `${this._imageBase}/planets/${id}.jpg`;
   };
 
-  getAllStarships = async () => {
-    const res = await this.getResource(`/starships/`);
-    return res.results.map((starship) => this._transformStarship(starship));
+  getAllStarships = async (page) => {
+    const res = await this.getResource(`/starships/?page=${page}`);
+    return this._getPagebleData(res, this._transformStarship);
   };
 
   getStarship = async (id) => {
@@ -52,11 +52,9 @@ export default class SwapiService {
     return `${this._imageBase}/starships/${id}.jpg`;
   };
 
-  getAllFilms = async () => {
-    const res = await this.getResource(`/films/`);
-    return res.results
-      .sort((a, b) => a.episode_id - b.episode_id)
-      .map(this._transformFilm);
+  getAllFilms = async (page) => {
+    const res = await this.getResource(`/films/?page=${page}`);
+    return this._getPagebleData(res, this._transformFilm);
   };
 
   getFilm = async (id) => {
@@ -66,6 +64,15 @@ export default class SwapiService {
 
   getFilmImage = ({ id }) => {
     return `${this._imageBase}/films/${id}.jpg`;
+  };
+
+  _getPagebleData = (sourceData, transformFunc) => {
+    return {
+      data: sourceData.results.map(transformFunc),
+      totalPages: Math.ceil(sourceData.count / 10),
+      hasNext: !!sourceData.next,
+      hasPrevious: !!sourceData.previous,
+    };
   };
 
   _extractId = (item) => {

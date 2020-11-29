@@ -1,3 +1,5 @@
+import "./list-data.scss";
+
 import React, { Component } from "react";
 
 import ErrorIndicator from "../../error-indicator";
@@ -7,6 +9,10 @@ const listData = (View) => {
   return class extends Component {
     state = {
       data: null,
+      totalPages: 1,
+      currentPage: 1,
+      hasNext: false,
+      hasPrevious: false,
       loading: true,
       error: false,
     };
@@ -15,8 +21,11 @@ const listData = (View) => {
       this.update();
     }
 
-    componentDidUpdate(prevProps) {
-      if (this.props.getData !== prevProps.getData) {
+    componentDidUpdate(prevProps, prevState) {
+      if (
+        this.props.getData !== prevProps.getData ||
+        this.state.currentPage !== prevState.currentPage
+      ) {
         this.update();
       }
     }
@@ -26,12 +35,14 @@ const listData = (View) => {
         loading: true,
         error: false,
       });
-
       this.props
-        .getData()
-        .then((data) => {
+        .getData(this.state.currentPage)
+        .then((pagebleData) => {
           this.setState({
-            data,
+            data: pagebleData.data,
+            totalPages: pagebleData.totalPages,
+            hasNext: pagebleData.hasNext,
+            hasPrevious: pagebleData.hasPrevious,
             loading: false,
           });
         })
@@ -43,8 +54,22 @@ const listData = (View) => {
         });
     }
 
+    changePage(isNext) {
+      this.setState(({ currentPage }) => ({
+        currentPage: currentPage + (isNext ? 1 : -1),
+      }));
+    }
+
     render() {
-      const { data, loading, error } = this.state;
+      const {
+        data,
+        loading,
+        error,
+        totalPages,
+        currentPage,
+        hasNext,
+        hasPrevious,
+      } = this.state;
 
       if (loading) {
         return <Spinner />;
@@ -54,7 +79,30 @@ const listData = (View) => {
         return <ErrorIndicator />;
       }
 
-      return <View {...this.props} data={data} />;
+      return (
+        <div className="pageble-list">
+          <View {...this.props} data={data} />
+          <div className="paging-block">
+            <button
+              onClick={() => this.changePage()}
+              disabled={!hasPrevious}
+              className="btn btn-secondary"
+            >
+              Previous
+            </button>
+            <span>
+              {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={() => this.changePage(true)}
+              disabled={!hasNext}
+              className="btn btn-secondary"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      );
     }
   };
 };
