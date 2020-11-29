@@ -83,23 +83,25 @@ const listData = (View) => {
         <div className="pageble-list">
           <View {...this.props} data={data} />
           <div className="paging-block">
-            <button
-              onClick={() => this.changePage()}
-              disabled={!hasPrevious}
-              className="btn btn-secondary"
-            >
-              Previous
-            </button>
+            {hasPrevious && (
+              <button
+                onClick={() => this.changePage()}
+                className="btn btn-secondary"
+              >
+                Previous
+              </button>
+            )}
             <span>
               {currentPage} of {totalPages}
             </span>
-            <button
-              onClick={() => this.changePage(true)}
-              disabled={!hasNext}
-              className="btn btn-secondary"
-            >
-              Next
-            </button>
+            {hasNext && (
+              <button
+                onClick={() => this.changePage(true)}
+                className="btn btn-secondary"
+              >
+                Next
+              </button>
+            )}
           </div>
         </div>
       );
